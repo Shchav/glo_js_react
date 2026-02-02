@@ -23,7 +23,6 @@ let servicePrice1 = +prompt('Сколько это будет стоить?');
 service2 = prompt('Какой дополнительный тип услуги нужен?');
 let servicePrice2 = +prompt('Сколько это будет стоить?');
 fullPrice = screenPrice + servicePrice1 + servicePrice2;
-console.log(screenPrice, servicePrice1, servicePrice2);
 let servicePercentPrice = Math.ceil(fullPrice - rollback);
 console.log(servicePercentPrice);
 if (fullPrice >= 30000) {

@@ -10,8 +10,6 @@ let service2 = prompt('Какой дополнительный тип услуг
 let servicePrice2 = +prompt('Сколько это будет стоить?');
 let rollback = 10;
 
-// let allServicePrices;
-
 const showTypeOF = function (variable) {
     console.log(variable, typeof variable);
 }
@@ -30,8 +28,7 @@ const getRollbackMessage = function (price) {
 
 const trimStartSpace = function (str) {
     if (str[0] == ' ') {
-        str = str.replace(str[0], '');
-        str = trimStartSpace(str);
+        str = trimStartSpace(str.replace(str[0], ''));
     }
     return str;
 }

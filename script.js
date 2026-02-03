@@ -11,7 +11,7 @@ console.log(typeof adaptive);
 console.log('Стоимость верстки экранов ' + screenPrice + ' рублей/долларов/гривен/юани');
 console.log('Стоимость разработки сайта ' + fullPrice + ' рублей/ долларов/гривен/юани');
 console.log(screens.toLowerCase().split(', '));
-console.log(fullPrice * (rollback / 100));
+console.log(fullPrice - (fullPrice * (rollback / 100)));
 
 // lesson 03
 title = prompt('Как называется ваш проект?');

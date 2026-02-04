@@ -8,7 +8,11 @@ let service1 = prompt('Какой дополнительный тип услуг
 let servicePrice1 = +prompt('Сколько это будет стоить?');
 let service2 = prompt('Какой дополнительный тип услуги нужен?');
 let servicePrice2 = +prompt('Сколько это будет стоить?');
+
 let rollback = 10;
+let allServicePrices;
+let fullPrice;
+let servicePercentPrice;
 
 const showTypeOF = function (variable) {
     console.log(variable, typeof variable);
@@ -43,17 +47,17 @@ function getFullPrice() {
 
 const getTitle = function () {
     title = trimStartSpace(title);
-    title = title[0].toUpperCase() + title.slice(1).toLowerCase();
-    return title;
+    return title[0].toUpperCase() + title.slice(1).toLowerCase();
 }
 
 function getServicePercentPrices() {
     return fullPrice - (fullPrice * (rollback / 100));
 }
 
-let allServicePrices = getAllServicePrices();
-let fullPrice = getFullPrice();
-let servicePercentPrice = getServicePercentPrices();
+allServicePrices = getAllServicePrices();
+fullPrice = getFullPrice();
+servicePercentPrice = getServicePercentPrices();
+title = getTitle();
 
 showTypeOF(getTitle());
 showTypeOF(fullPrice);
@@ -62,4 +66,5 @@ showTypeOF(adaptive);
 console.log(screens);
 console.log(getRollbackMessage(fullPrice));
 console.log(servicePercentPrice);
+console.log(title);
 

@@ -1,105 +1,28 @@
 'use strict'
 
-let title;
-let screens;
-let screenPrice;
-let adaptive;
-
-let rollback = 10;
-let allServicePrices;
-let fullPrice;
-let servicePercentPrice;
-let service1;
-let service2;
-
-const showTypeOF = function (variable) {
-    console.log(variable, typeof variable);
-}
-
-const getRollbackMessage = function (price) {
-    if (price >= 30000) {
-        return "Даем скидку в 10%";
-    } else if (price >= 15000 && price < 30000) {
-        return "Даем скидку в 10%";
-    } else if (price >= 0 && price < 15000) {
-        return "Скидка не предусмотрена";
-    } else {
-        return "Что-то пошло не так";
-    }
-}
-
-const trimStartSpace = function (str) {
-    if (str[0] == ' ') {
-        str = trimStartSpace(str.replace(str[0], ''));
-    }
-    return str;
-}
-
 const isNumber = function (num) {
-    return !isNaN(parseFloat(num)) && isFinite(num);
+    return !!num && isFinite(num) && !num.includes(' ');
 }
 
-const asking = function () {
-    title = prompt('Как называется ваш проект?', 'Калькулятор верстки');
-    screens = prompt('Какие типы экранов нужно разработать?', 'Простые, сложные')
+const guessNum = function (wishNum) {
 
-    screenPrice = prompt('Сколько будет стоить данная работа?');
+    return function game() {
+        let userNum = prompt('Угадай число от 1 до 100');
 
-    do {
-        screenPrice = prompt('Сколько будет стоить данная работа?');
-    } while (!isNumber(screenPrice));
-
-    adaptive = confirm('Нужен ли адаптив на сайте?');
-}
-
-const getAllServicePrices = function () {
-    let sum = 0;
-    let sumSevice;
-
-    for (let i = 0; i < 2; i++) {
-
-        if (i === 0) {
-            service1 = prompt('Какой дополнительный тип услуги нужен?');
-        } else if (i === 1) {
-            service2 = prompt('Какой дополнительный тип услуги нужен?');
+        function check(cond, message, isContinue) {
+            if (cond) {
+                alert(message);
+                if (isContinue)
+                    game();
+            }
+            return cond;
         }
-
-        do {
-            sumSevice = prompt('Сколько это будет стоить?');
-        } while (!isNumber(sumSevice));
-        sum += +sumSevice;
-    };
-
-    return sum;
+        check(userNum == null, 'Игра окончена') ||
+            check(!isNumber(userNum), 'Введи число!', true) ||
+            check(userNum > wishNum, 'Загаданное число меньше', true) ||
+            check(userNum < wishNum, 'Загаданное число больше', true) ||
+            check(userNum == wishNum, 'Поздравляю, Вы угадали!!!')
+    }
 }
 
-function getFullPrice() {
-    return screenPrice + allServicePrices;
-}
-
-const getTitle = function () {
-    title = trimStartSpace(title);
-    return title[0].toUpperCase() + title.slice(1).toLowerCase();
-}
-
-function getServicePercentPrices() {
-    return fullPrice - (fullPrice * (rollback / 100));
-}
-
-asking();
-allServicePrices = getAllServicePrices();
-fullPrice = getFullPrice();
-servicePercentPrice = getServicePercentPrices();
-title = getTitle();
-
-showTypeOF(getTitle());
-showTypeOF(fullPrice);
-showTypeOF(adaptive);
-
-console.log('allServicePrices', allServicePrices);
-
-console.log(screens);
-console.log(getRollbackMessage(fullPrice));
-console.log(servicePercentPrice);
-console.log(title);
-
+guessNum(23)();

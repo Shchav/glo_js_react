@@ -21,7 +21,7 @@ const guessNum = function (wishNum) {
             check(!isNumber(userNum), 'Введи число!', true) ||
             check(userNum > wishNum, 'Загаданное число меньше', true) ||
             check(userNum < wishNum, 'Загаданное число больше', true) ||
-            check(userNum == wishNum, 'Поздравляю, Вы угадали!!!')
+            check(userNum == wishNum, 'Поздравляю, Вы угадали!!!');
     }
 }
 

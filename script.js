@@ -37,76 +37,68 @@ const appData = {
 
     trimStartSpace: function (str) {
         if (str[0] == ' ') {
-            str = trimStartSpace(str.replace(str[0], ''));
+            str = appData.trimStartSpace(str.replace(str[0], ''));
         }
         return str;
     },
 
-    const isNumber = function (num) {
+    isNumber: function (num) {
         return !isNaN(parseFloat(num)) && isFinite(num);
-    }
+    },
 
-const asking = function () {
-        title = prompt('Как называется ваш проект?', 'Калькулятор верстки');
-        screens = prompt('Какие типы экранов нужно разработать?', 'Простые, сложные')
-
-        screenPrice = prompt('Сколько будет стоить данная работа?');
-
-        do {
-            screenPrice = prompt('Сколько будет стоить данная работа?');
-        } while (!isNumber(screenPrice));
-
-        adaptive = confirm('Нужен ли адаптив на сайте?');
-    }
-
-const getAllServicePrices = function () {
+    getAllServicePrices: function () {
         let sum = 0;
         let sumSevice;
 
         for (let i = 0; i < 2; i++) {
 
             if (i === 0) {
-                service1 = prompt('Какой дополнительный тип услуги нужен?');
+                appData.service1 = prompt('Какой дополнительный тип услуги нужен?', 'Проверка');
             } else if (i === 1) {
-                service2 = prompt('Какой дополнительный тип услуги нужен?');
+                appData.service2 = prompt('Какой дополнительный тип услуги нужен?', 'Тестирование');
             }
 
             do {
-                sumSevice = prompt('Сколько это будет стоить?');
-            } while (!isNumber(sumSevice));
+                sumSevice = prompt('Сколько это будет стоить?', 20_000);
+            } while (!appData.isNumber(sumSevice));
             sum += +sumSevice;
         };
 
         return sum;
+    },
+
+    getFullPrice: function () {
+        return appData.screenPrice + appData.allServicePrices;
+    },
+
+    getTitle: function () {
+        appData.title = appData.trimStartSpace(appData.title);
+        return appData.title[0].toUpperCase() + appData.title.slice(1).toLowerCase();
+    },
+
+    getServicePercentPrices: function () {
+        return appData.fullPrice - (appData.fullPrice * (appData.rollback / 100));
+    },
+
+    start: function () {
+        appData.asking();
+        appData.allServicePrices = appData.getAllServicePrices();
+        appData.fullPrice = appData.getFullPrice();
+        appData.servicePercentPrice = appData.getServicePercentPrices();
+        appData.title = appData.getTitle();
+
+        appData.logger();
+    },
+
+    logger: function () {
+        for (let property in appData)
+            console.log(property);
     }
-
-function getFullPrice() {
-        return screenPrice + allServicePrices;
 }
 
-const getTitle = function () {
-    title = trimStartSpace(title);
-    return title[0].toUpperCase() + title.slice(1).toLowerCase();
-}
+appData.start();
 
-function getServicePercentPrices() {
-    return fullPrice - (fullPrice * (rollback / 100));
-}
+console.log(appData.fullPrice);
+console.log(appData.servicePercentPrice);
 
-asking();
-allServicePrices = getAllServicePrices();
-fullPrice = getFullPrice();
-servicePercentPrice = getServicePercentPrices();
-title = getTitle();
-
-showTypeOF(getTitle());
-showTypeOF(fullPrice);
-showTypeOF(adaptive);
-
-console.log('allServicePrices', allServicePrices);
-
-console.log(screens);
-console.log(getRollbackMessage(fullPrice));
-console.log(servicePercentPrice);
-console.log(title);
 

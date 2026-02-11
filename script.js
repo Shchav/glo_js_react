@@ -1,6 +1,5 @@
 'use strict'
 
-// const aside = document.querySelector('.books');
 const divs = document.querySelectorAll('.book');
 divs[0].before(divs[1]);
 divs[2].before(divs[4]);
@@ -29,5 +28,3 @@ const content6Book = divs[2].querySelectorAll('li');
 const chapter8 = content6Book[8].cloneNode();
 chapter8.textContent = 'Глава 8: За пределами ES6';
 content6Book[8].after(chapter8);
-
-console.log(content6Book)

@@ -75,14 +75,15 @@ const appData = {
 
     showResult: function () {
         total.value = appData.screenPrice;
+        totalCount.value = appData.countScreens;
         totalCountOther.value = appData.servicePricesPercent + appData.servicePricesNumber;
         fullTotalCount.value = appData.fullPrice;
         totalCountRollback.value = appData.servicePercentPrice;
-        totalCount.value = appData.countScreens;
     },
 
     addScreens: function () {
         screens = document.querySelectorAll('.screen');
+        appData.screens = [];
         screens.forEach(function (screen, index) {
             const select = screen.querySelector('select');
             const input = screen.querySelector('input');
@@ -98,6 +99,7 @@ const appData = {
     },
 
     addServices: function () {
+        appData.servicesPercent = [];
         otherItemsPercent.forEach(function (item) {
             const check = item.querySelector('input[type=checkbox]');
             const label = item.querySelector('label');
@@ -132,6 +134,11 @@ const appData = {
     },
 
     addPrices: function () {
+        appData.screenPrice = 0;
+        appData.countScreens = 0;
+        appData.servicePricesNumber = 0;
+        appData.servicePricesPercent = 0;
+
         for (let screen of appData.screens) {
             appData.screenPrice += +screen.price;
             appData.countScreens += screen.count;

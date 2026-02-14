@@ -19,7 +19,6 @@ const totalCountOther = document.getElementsByClassName('total-input')[2];
 const fullTotalCount = document.getElementsByClassName('total-input')[3];
 const totalCountRollback = document.getElementsByClassName('total-input')[4];
 
-// const defaultSelect = document.querySelector('.screen');
 let screens = document.querySelectorAll('.screen');
 
 
@@ -190,13 +189,6 @@ const appData = {
     addScreenBlock: function () {
         const cloneScreen = screens[0].cloneNode(true);
         screens[screens.length - 1].after(cloneScreen);
-    },
-
-    prompting: function (message, defaultInput, mustBeText) {
-        do {
-            var input = prompt(message, defaultInput);
-        } while (mustBeText == this.isNumber(input));
-        return input;
     },
 
     addPrices: function () {

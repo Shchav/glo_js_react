@@ -53,15 +53,6 @@ const DomElement = function (selector) {
             return this;
         }
     }
-    this.element = function () {
-        return this.elem;
-    }
-    this.setPosition = function (position) {
-        if (this.elem) {
-            this.elem.style.cssText += 'position: ' + position;
-            return this;
-        }
-    }
 
     createElem.call(this, selector);
 }

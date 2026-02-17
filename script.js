@@ -1,62 +1,17 @@
-'use stict'
+'use strict'
 
-const DomElement = function (selector) {
-
-    const createElem = function (selector) {
-        this.selector = selector;
-        switch (selector[0]) {
-            case '.':
-                this.elem = document.createElement('div');
-                this.elem.classList.add(selector.slice(1));
-                break;
-            case '#':
-                this.elem = document.createElement('p');
-                this.elem.id = selector.slice(1);
-        }
-        if (this.elem) {
-            document.body.append(this.elem);
-        }
+class First {
+    hello() {
+        console.log('Привет я метод родителя!');
     }
-
-    this.setText = function (text) {
-        if (this.elem) {
-            this.elem.textContent = text;
-            return this;
-        }
-    }
-
-    this.setWidth = function (width) {
-        if (this.elem) {
-            this.width = width;
-            this.elem.style.cssText += 'width: ' + width + 'px;';
-            return this;
-        }
-    }
-    this.setHeight = function (height) {
-        if (this.elem) {
-            this.height = height;
-            this.elem.style.cssText += 'height: ' + height + 'px;';
-            return this;
-        }
-    }
-    this.setBackground = function (color) {
-        if (this.elem) {
-            this.bg = color;
-            this.elem.style.cssText += 'background: ' + color + ';';
-            return this;
-        }
-    }
-    this.setFontsize = function (fontSize) {
-        if (this.elem) {
-            this.fontSize = fontSize;
-            this.elem.style.cssText += 'font-size: ' + fontSize + 'px;';
-            return this;
-        }
-    }
-
-    createElem.call(this, selector);
 }
 
-square = new DomElement('.square').setWidth(40).setHeight(20).
-    setFontsize(14).setBackground('#AAAAAA').setText('lorem');
+class Second extends First {
+    hello() {
+        super.hello();
+        console.log('А я наследуемый метод!');
+    }
+}
 
+const second = new Second;
+second.hello();

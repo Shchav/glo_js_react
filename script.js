@@ -21,23 +21,18 @@ const getData = (sendData) => {
 }
 
 const sendData = (obj) => {
-    fetch('https://jsonplaceholder.typicode.com/posts', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json; charset=utf-8'
-        },
-        body: JSON.stringify(obj)
-    }).then(res => {
-        if (!res.ok) {
-            console.log('Ошибка отправки данных');
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://jsonplaceholder.typicode.com/posts');
+    xhr.responseType = 'json';
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify(obj));
+    xhr.onload = function () {
+        if (xhr.status != 201) {
+            console.log(`Ошибка ${xhr.status}: ${xhr.statusText}`);
         } else {
-            return res.json();
+            console.log(`Объект ${JSON.stringify(xhr.response)} успешно получен`);
         }
-    }).then(res => {
-        console.log(`Объект ${JSON.stringify(res)} успешно отправлен`);
-    }).catch(error => {
-        console.log(`Ошибка: ${error}`);
-    });
+    };
 }
 
 getData(sendData);

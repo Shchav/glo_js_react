@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "name": "2299",
+      "email": "shchav@mail.ru",
+      "children": false,
+      "permissions": true,
+      "id": "ef0d"
+    },
+    {
+      "name": "22255",
+      "email": "shchav@mail.ru",
+      "children": true,
+      "permissions": false,
+      "id": "c576"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

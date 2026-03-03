@@ -26,7 +26,8 @@
                         <form>
                             <div class="mb-3">
                                 <label for="form-name" class="form-label">Имя</label>
-                                <input type="text" class="form-control" id="form-name" required aria-describedby="emailHelp">
+                                <input type="text" class="form-control" id="form-name" required
+                                    aria-describedby="emailHelp">
                             </div>
 
                             <div class="mb-3">
@@ -56,21 +57,16 @@
                             <span class="input-group-text" id="search-input-group">
                                 <i class="bi-search"></i>
                             </span>
-                            <input 
-                            type="text" 
-                            class="form-control" 
-                            placeholder="Поиск" 
-                            aria-label="Поиск" 
-                            id="search-input"
-                            aria-describedby="search-input-group">
-                          </div>
+                            <input type="text" class="form-control" placeholder="Поиск" aria-label="Поиск"
+                                id="search-input" aria-describedby="search-input-group">
+                        </div>
                     </div>
                     <div class="col col-12 col-lg-4 col-md-6 d-flex justify-content-end">
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-info" id="btn-isChildren">С детьми</button>
                             <button type="button" class="btn btn-info" id="btn-isPermissions">С доступом</button>
                             <button type="button" class="btn btn-info" id="btn-isAll">Все</button>
-                          </div>
+                        </div>
                     </div>
                 </div>
                 <div class="table-responsive">
@@ -86,7 +82,7 @@
                             </tr>
                         </thead>
                         <tbody id="table-body">
-                            <tr>
+                            <!-- <tr>
                                 <th scope="row">1</th>
                                 <td>Mark</td>
                                 <td>otto@gmail.com</td>
@@ -107,8 +103,8 @@
                                         </button>
                                     </div>
                                 </td>
-                            </tr>
-                            <tr>
+                            </tr> -->
+                            <!-- <tr>
                                 <th scope="row">2</th>
                                 <td>Jacob</td>
                                 <td>thornton@gmail.com</td>
@@ -129,10 +125,11 @@
                                         </button>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>
+                <p id="error-notification"></p>
             </div>
         </section>
     </main>

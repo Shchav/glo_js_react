@@ -38,7 +38,7 @@ export class UserService {
         return this.sendDataOverNet({ params: `?name:contains=${str}` })
     }
 
-    sendDataOverNet(
+    async sendDataOverNet(
         {
             url = 'http://localhost:4545/users',
             params = '',
@@ -47,22 +47,16 @@ export class UserService {
             body
         }) {
         this.errorNotification.textContent = ''
-        console.log(`${url}${params}`);
-
-        return fetch(`${url}${params}`,
-            {
-                method,
-                headers,
-                body
-            })
-            .then(res => res.json())
-            .catch(error => {
-                console.log(error);
-
-                this.errorNotification.textContent = 'Произошла ошибка, данных нет!'
-            })
-    }
-    getDataFromNet(url) {
-
+        try {
+            const res = await fetch(`${url}${params}`,
+                {
+                    method,
+                    headers,
+                    body
+                })
+            return await res.json()
+        } catch (error) {
+            this.errorNotification.textContent = 'Произошла ошибка, данных нет!'
+        }
     }
 }

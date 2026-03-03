@@ -1,18 +1,18 @@
 {
   "users": [
     {
-      "name": "2299",
-      "email": "shchav@mail.ru",
+      "name": "229955",
+      "email": "shchav@mail.ru56",
       "children": false,
       "permissions": true,
       "id": "ef0d"
     },
     {
-      "name": "22255",
+      "id": "a0a4",
+      "name": "Alex35",
       "email": "shchav@mail.ru",
-      "children": true,
-      "permissions": false,
-      "id": "c576"
+      "children": false,
+      "permissions": false
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

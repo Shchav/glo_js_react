@@ -10,7 +10,6 @@ export class UserService {
     }
     removeUser(id) {
         return this.sendDataOverNet({ method: 'DELETE', params: `/${id}` })
-
     }
     changeUser(id, data) {
         return this.sendDataOverNet({
@@ -36,7 +35,7 @@ export class UserService {
         return this.sendDataOverNet({ params: `?_sort=${sortOption.name}` })
     }
     getSearchUsers(str) {
-        return this.sendDataOverNet({ params: `?_sort=${sortOption.name}` })
+        return this.sendDataOverNet({ params: `?name:contains=${str}` })
     }
 
     sendDataOverNet(
@@ -66,6 +65,4 @@ export class UserService {
     getDataFromNet(url) {
 
     }
-
-
 }

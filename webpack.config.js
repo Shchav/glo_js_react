@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url'
 // module.exports = {
 export default {
     // context: path.resolve(__dirname, 'src'),
-    entry: './src/index.js',
+    entry: './js/script.js',
     output: {
         filename: 'js/main.js',
         // path: path.resolve(__dirname, 'dist')

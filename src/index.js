@@ -18,6 +18,9 @@ select.addEventListener('change', (e) => {
 })
 
 const getInfo = async (brand) => {
-    let res = await fetch(`http://localhost:4545/cars?brand:eq=${brand}`);
-    return (await res.json())[0]
+    try {
+        let res = await fetch(`http://localhost:4545/cars?brand:eq=${brand}`);
+        return (await res.json())[0]
+    } catch (error) { info.innerHTML = error.message }
 }
+

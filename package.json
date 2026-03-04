@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --mode=production",
     "watch": "webpack --watch --mode=development",
-    "server": "npx json-server db/db.json --port=4545"
+    "server": "npx json-server db/cars.json --port=4545"
   },
   "keywords": [],
   "author": "",

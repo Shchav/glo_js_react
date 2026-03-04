@@ -1,25 +1,23 @@
-import { render } from "./modules/render";
-import { addUsers } from "./modules/addUsers";
-import { removeUsers } from "./modules/removeUsers";
-import { UserService } from "./modules/userService";
-import { changePermissions } from "./modules/changePermissions";
-import { editUsers } from "./modules/editUsers";
-import { filterUsers } from "./modules/filterUsers";
-import { sortUsers } from "./modules/sortUsers";
-import { searchUsers } from "./modules/searchUsers";
-import { debounce } from "./modules/helpers";
 
-window.userService = new UserService
+const select = document.querySelector('select')
+const info = document.querySelector('p')
 
-userService.getUsers().then(data => {
-    render(data)
+select.addEventListener('change', (e) => {
+    switch (select.value) {
+        case 'bmw':
+        case 'volvo':
+            getInfo(select.value)
+                .then(car => {
+                    info.innerHTML = `Тачка ${car.brand} ${car.model} <br>
+                    Цена: ${car.price}\$`
+                })
+            break;
+        default:
+            info.innerHTML = ''
+    }
 })
 
-addUsers()
-removeUsers()
-changePermissions()
-editUsers()
-filterUsers()
-sortUsers()
-searchUsers()
-debounce()
+const getInfo = async (brand) => {
+    let res = await fetch(`http://localhost:4545/cars?brand:eq=${brand}`);
+    return (await res.json())[0]
+}
